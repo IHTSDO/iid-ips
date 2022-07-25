@@ -1,6 +1,6 @@
 # IPS Terminology Implementation Demonstrator
 
-This project generates an implementation demo for terminology bindings for the International Patient Summary.
+This project generates an implementation demo for terminology bindings for SNOMED CT and the International Patient Summary Implementation Guide (https://build.fhir.org/ig/HL7/fhir-ips/index.html).
 
 ## Run locally
 
