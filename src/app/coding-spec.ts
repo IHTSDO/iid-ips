@@ -1,61 +1,116 @@
 export const codingSpec = [
     {
-        title: 'GROUP 1',
-        description: 'The first group of bindings in the coding demonstration',
+        title: 'Allergies and Intolerances',
+        description: 'This section documents the relevant allergies or intolerances (conditions) for a patient, describing the kind of reaction (e.g. rash, anaphylaxis,..); preferably the agents that cause it; and optionally the criticality and the certainty of the allergy. At a minimum, it should list currently active and any relevant historical allergies and adverse reactions. If no information about allergies is available, or if no allergies are known this should be clearly documented in the section.',
         bindings: [
             {
-                title: 'Medicinal product + groupers',
+                title: 'Allergy intolerance substance (all SNOMED CT)',
                 type: 'autocomplete',
-                ecl: `<< 763158003 |Medicinal product| :
-                        [0..0] 1142139005 |Count of base of active ingredient| = *,
-                        [0..0] 411116001 |Has manufactured dose form| = *,
-                        [0..0] 774158006 |Has product name| = *`,
+                ecl: `< 762766007 | Edible substance (substance)| OR
+                < 425620007 | Metal (substance)| OR 
+                < 410942007 |Drug or medicament (substance)| OR 
+                < 373873005 |Pharmaceutical / biologic product (product)|`,
                 value: '',
-                note: 'Medicinal products, contain at least provided ingredientes (open world assuption), no information on form.'
+                note: 'Searching Allergy intolerance substance codes using a complete edition of SNOMED CT.'
             },
             {
-                title: 'Gender',
-                type: 'dropdown',
-                ecl: `< 365873007 |Gender finding (finding)|`,
-                value: '',
-                note: 'Patient gender.'
-            },
-            {
-                title: 'Medicinal product form + groupers',
+                title: 'Allergy intolerance substance (IPS Refset)',
                 type: 'autocomplete',
-                ecl: `<< 763158003 |Medicinal product| :
-                    [0..0] 1142139005 |Count of base of active ingredient| = *,
-                    411116001 |Has manufactured dose form| = *,
-                    [0..0] 774158006 |Has product name| = *`,
+                ecl: `(< 762766007 | Edible substance (substance)| OR
+                < 425620007 | Metal (substance)| OR 
+                < 410942007 |Drug or medicament (substance)| OR 
+                < 373873005 |Pharmaceutical / biologic product (product)|) AND 
+                (^816080008 |International Patient Summary|)`,
                 value: '',
-                note: 'Medicinal products, with form details.'
+                note: 'Searching Allergy intolerance substance codes using members of the IPS Refset only.'
             }
         ]
     },
     {
-        title: 'GROUP 2',
-        description: 'The second group of bindings in the coding demonstration',
+        title: 'Problem List',
+        description: 'The IPS problem section lists and describes clinical problems or conditions currently being monitored for the patient.',
         bindings: [
             {
-                title: 'Medicinal product only',
+                title: 'Problem List Finding/Situation/Event (all SNOMED CT)',
                 type: 'autocomplete',
-                ecl: `<< 763158003 |Medicinal product| :
-                    1142139005 |Count of base of active ingredient| = *,
-                    [0..0] 411116001 |Has manufactured dose form| = *,
-                    [0..0] 774158006 |Has product name| = *`,
+                ecl: `< 404684003 |Clinical finding (finding)| OR 
+                < 272379006 |Event (event)| OR 
+                (< 243796009 |Situation with explicit context (situation)| : [0..0] 363589002 |Associated procedure (attribute)| = *)`,
                 value: '',
-                note: 'Medicinal products, containing only the provided ingredientes (close world assuption), with no information on form.'
+                note: 'Searching problem list codes using a complete edition of SNOMED CT.'
             },
             {
-                title: 'Medicinal product form only',
+                title: 'Problem List Finding/Situation/Event (IPS Refset)',
                 type: 'autocomplete',
-                ecl: `<< 763158003 |Medicinal product| :
-                    1142139005 |Count of base of active ingredient| = *,
-                    411116001 |Has manufactured dose form| = *,
-                    [0..0] 732943007 |Has basis of strength substance (attribute)| = *,
-                    [0..0] 774158006 |Has product name| = *`,
+                ecl: `(< 404684003 |Clinical finding (finding)| OR 
+                < 272379006 |Event (event)| OR 
+                (< 243796009 |Situation with explicit context (situation)| : [0..0] 363589002 |Associated procedure (attribute)| = *)) AND 
+                (^816080008 |International Patient Summary|)`,
                 value: '',
-                note: 'Medicinal products, with form details, containing only the provided ingredientes (close world assuption).'
+                note: 'Searching problem list codes using members of the IPS Refset only.'
+            }
+        ]
+    },
+    {
+        title: 'Procedures',
+        description: 'In IPS, procedures are used to list and describe the history of clinical procedures performed in the patient, or the procedures for which results are reported.',
+        bindings: [
+            {
+                title: 'Procedures (all SNOMED CT)',
+                type: 'autocomplete',
+                ecl: `(< 71388002 |Procedure (procedure)|)`,
+                value: '',
+                note: 'Searching procedure codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Procedures (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 71388002 |Procedure (procedure)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching procedure codes using members of the IPS Refset only.'
+            }
+        ]
+    },
+    {
+        title: 'Medications',
+        description: 'Medications are used to list and describe the history of medications prescribed or consumed by the patient.',
+        bindings: [
+            {
+                title: 'Medications (all SNOMED CT)',
+                type: 'autocomplete',
+                ecl: `(< 373873005 |Pharmaceutical / biologic product (product)|)`,
+                value: '',
+                note: 'Searching medication codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Medications (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 373873005 |Pharmaceutical / biologic product (product)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching medication codes using members of the IPS Refset only.'
+            }
+        ]
+    },
+    {
+        title: 'Result Organisms',
+        description: 'This is a value set of the SNOMED CT organism concepts for use in the Results section observation values.',
+        bindings: [
+            {
+                title: 'Result Organisms (all SNOMED CT)',
+                type: 'autocomplete',
+                ecl: `(< 410607006 |Organism (organism)|)`,
+                value: '',
+                note: 'Searching result organism codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Result Organisms (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 410607006 |Organism (organism)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching result organism codes using members of the IPS Refset only.'
             }
         ]
     }
