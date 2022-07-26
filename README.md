@@ -8,7 +8,7 @@ Clone and run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
 
 ## Demo site
 
-TODO: Link to github pages.
+Access the demo site: https://ihtsdo.github.io/iid-ips/
 
 ## Further help
 

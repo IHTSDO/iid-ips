@@ -17,8 +17,8 @@ export class AppComponent {
   selectedEdition = 'Edition';
   selectedLanguage = 'en';
   fhirServers = [
-    { name: "SNOMED Public Browser", url: "https://snowstorm.ihtsdotools.org/snowstorm/snomed-ct/fhir"},
-    { name: "Sub-ontology test", url: "https://ips-browser.snomedtools.org/snowstorm/snomed-ct/fhir"},
+    { name: "SNOMED Public Browser", url: "https://snowstorm.ihtsdotools.org/fhir"},
+    { name: "Sub-ontology test", url: "https://ips-browser.snomedtools.org/fhir"},
   ];
   selectedServer = this.fhirServers[0];
 
