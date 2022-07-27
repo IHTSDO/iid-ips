@@ -113,5 +113,26 @@ export const codingSpec = [
                 note: 'Searching result organism codes using members of the IPS Refset only.'
             }
         ]
+    },
+    {
+        title: 'Immunization',
+        description: 'This is a value set of the SNOMED CT immunization concepts.',
+        bindings: [
+            {
+                title: 'Immunizations (all SNOMED CT)',
+                type: 'autocomplete',
+                ecl: `(< 787859002 |Vaccine product|)`,
+                value: '',
+                note: 'Searching immunization codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Immunizations (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 787859002 |Vaccine product|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching immunization codes using members of the IPS Refset only.'
+            }
+        ]
     }
 ]
