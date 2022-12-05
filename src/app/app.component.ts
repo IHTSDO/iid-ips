@@ -17,8 +17,8 @@ export class AppComponent {
   selectedEdition = 'Edition';
   selectedLanguage = 'en';
   fhirServers = [
-    { name: "SNOMED Public Browser", url: "https://snowstorm.ihtsdotools.org/fhir"},
-    { name: "IPS Terminology Beta", url: "https://ips-browser.snomedtools.org/fhir"},
+    { name: "Full Editions of SNOMED CT", url: "https://snowstorm.ihtsdotools.org/fhir"},
+    { name: "IPS Terminology", url: "https://ips-browser.snomedtools.org/fhir"},
   ];
   selectedServer = this.fhirServers[0];
 

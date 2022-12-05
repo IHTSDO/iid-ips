@@ -3,7 +3,7 @@
   <span id="title">IPS - International Patient Summary</span>
   <span class="example-spacer"></span>
   
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="serverMenu">FHIR Server: {{selectedServer.name}}</button>
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="serverMenu">{{selectedServer.name}}</button>
   <mat-menu #serverMenu="matMenu">
     <button mat-menu-item *ngFor="let server of fhirServers" (click)="setFhirServer(server)">{{server.name}}</button>
   </mat-menu>
