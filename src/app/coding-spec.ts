@@ -132,5 +132,26 @@ export const codingSpec = [
                 note: 'Searching result organism codes using members of the IPS Refset only.'
             }
         ]
+    },
+    {
+        title: 'Devices',
+        description: 'A device used by or implanted on the patient is described that in the patient summary.',
+        bindings: [
+            {
+                title: 'Devices (all SNOMED CT)',
+                type: 'autocomplete',
+                ecl: `(< 49062001 |Device (physical object)|)`,
+                value: '',
+                note: 'Searching result organism codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Devices (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 49062001 |Device (physical object)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching result organism codes using members of the IPS Refset only.'
+            }
+        ]
     }
 ]

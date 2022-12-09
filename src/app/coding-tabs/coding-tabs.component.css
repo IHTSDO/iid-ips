@@ -7,3 +7,19 @@ mat-tab-group {
 h2 {
     margin-top: 15px;
 }
+
+#flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 50px;
+}
+  
+#flex-container > .flex-item {
+    flex: initial;
+}
+
+.search {
+    min-width: 40%;
+}

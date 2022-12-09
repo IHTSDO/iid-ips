@@ -4,4 +4,38 @@
         <p>{{ section.description }}</p>
         <app-binding [bindings]="section.bindings"></app-binding>
     </mat-tab>
+    <mat-tab label="Interoperability Demo">
+        <h2>Interoperability Demo</h2>
+        <p>This demo shows the use of ECL to convert from codes in a complete SNOMED CT Edition to codes in the IPS Terminology using the proximal common ancestors technique. An example use case is sharing content between a member country and a non member country.</p>
+        <div id="flex-container">
+            <div class="flex-item search">
+                <app-autocomplete-binding [binding]="binding" *ngIf="binding.type == 'autocomplete'" (selectionChange)="conceptSelected($event)"></app-autocomplete-binding>
+            </div>
+            <div class="flex-item" *ngIf="searching">
+                <mat-spinner diameter="35"></mat-spinner>
+            </div>
+            <div class="flex-item" *ngIf="conceptIsPartOfIps">
+                <p>The concept is part of the IPS Terminology:</p>
+            </div>
+            <div class="flex-item" *ngIf="ipsOptions.length > 0">
+                <p>Corresponding concept in the IPS Terminology:</p>
+            </div>
+            <div class="flex-item" *ngIf="ipsOptions.length > 0">
+                <mat-list role="list">
+                    <mat-list-item role="listitem" *ngFor="let option of ipsOptions">
+                        {{ option.code }} |{{ option.display }}|
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+        <br><br>
+        <h2>Common proximal ancestor ECL query:</h2>
+        <code>
+(> |FOCUS CONCEPT| AND ^816080008 |International Patient Summary|) 
+MINUS 
+(> (> |FOCUS CONCEPT| AND ^816080008 |International Patient Summary|))
+
+        </code>
+        
+    </mat-tab>
 </mat-tab-group>

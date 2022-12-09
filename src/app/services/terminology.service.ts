@@ -40,11 +40,24 @@ export class TerminologyService {
     if (typeof terms != 'string') {
       terms = '';
     }
-    return `${this.snowstormFhirBase}/ValueSet/$expand?url=${this.fhirUrlParam}?fhir_vs=ecl/${encodeURIComponent(ecl)}&count=${count}&offset=${offset}&filter=${terms}&language=${this.lang}`
+    return `${this.snowstormFhirBase}/ValueSet/$expand?url=${this.fhirUrlParam}?fhir_vs=ecl/${encodeURIComponent(ecl)}&count=${count}&offset=${offset}&filter=${terms}&language=${this.lang}`;
   }
 
   expandValueSet(ecl: string, terms: string, offset?: number, count?:number): Observable<any> {
     let requestUrl = this.getValueSetExpansionUrl(ecl, terms, offset, count);
+    return this.http.get<any>(requestUrl)
+      .pipe(
+        catchError(this.handleError<any>('expandValueSet', {}))
+      );
+  }
+
+  expandValueSetFromServer(fhirBase: string, fhirUrl: string, ecl: string, terms: string, offset?: number, count?:number): Observable<any> {
+    if (!offset) offset = 0;
+    if (!count) count = 20;
+    if (typeof terms != 'string') {
+      terms = '';
+    }
+    let requestUrl = `${fhirBase}/ValueSet/$expand?url=${fhirUrl}?fhir_vs=ecl/${encodeURIComponent(ecl)}&count=${count}&offset=${offset}&filter=${terms}&language=${this.lang}`;
     return this.http.get<any>(requestUrl)
       .pipe(
         catchError(this.handleError<any>('expandValueSet', {}))
