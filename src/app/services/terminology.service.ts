@@ -40,7 +40,7 @@ export class TerminologyService {
     if (typeof terms != 'string') {
       terms = '';
     }
-    return `${this.snowstormFhirBase}/ValueSet/$expand?url=${this.fhirUrlParam}?fhir_vs=ecl/${encodeURIComponent(ecl)}&count=${count}&offset=${offset}&filter=${terms}&language=${this.lang}`;
+    return `${this.snowstormFhirBase}/ValueSet/$expand?url=${this.fhirUrlParam}?fhir_vs=ecl/${encodeURIComponent(ecl)}&count=${count}&offset=${offset}&filter=${terms}&language=${this.lang}&designation=${this.lang}`;
   }
 
   expandValueSet(ecl: string, terms: string, offset?: number, count?:number): Observable<any> {
