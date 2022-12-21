@@ -3,12 +3,18 @@
   <span id="title">IPS - International Patient Summary</span>
   <span class="example-spacer"></span>
   
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="serverMenu">{{selectedServer.name}}</button>
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="serverMenu"
+   matTooltip="{{selectedServer.name}}">
+    {{selectedServer.name}}
+  </button>
   <mat-menu #serverMenu="matMenu">
     <button mat-menu-item *ngFor="let server of fhirServers" (click)="setFhirServer(server)">{{server.name}}</button>
   </mat-menu>
 
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="editionsMenu">{{selectedEdition}}</button>
+  <button mat-raised-button color="accent" [matMenuTriggerFor]="editionsMenu"
+   matTooltip="{{selectedEdition}}">
+    {{selectedEdition}}
+  </button>
   <mat-menu #editionsMenu="matMenu" class="wide-menu">
     <ng-container *ngFor="let mainItem of editionsDetails">
       <button mat-menu-item [matMenuTriggerFor]="sub_menu">{{ mainItem.editionName }}</button>
