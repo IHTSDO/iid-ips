@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <img src="https://www.snomed.org/SNOMED/media/SNOMED/other/brand-mark.png" height="60px">
+  <img src="assets/img/small_logo.png" height="60px">
   <span id="title">IPS - International Patient Summary</span>
   <span class="example-spacer"></span>
   
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="serverMenu"
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="serverMenu"
    matTooltip="{{selectedServer.name}}">
     {{selectedServer.name}}
   </button>
@@ -11,7 +11,7 @@
     <button mat-menu-item *ngFor="let server of fhirServers" (click)="setFhirServer(server)">{{server.name}}</button>
   </mat-menu>
 
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="editionsMenu"
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="editionsMenu"
    matTooltip="{{selectedEdition}}">
     {{selectedEdition}}
   </button>
@@ -24,16 +24,16 @@
     </ng-container>
   </mat-menu>
   
-  <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">{{selectedLanguage}}</button>
+  <button mat-raised-button color="primary" [matMenuTriggerFor]="menu">{{selectedLanguage}}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item *ngFor="let language of languages" (click)="setLanguage(language)">{{language}}</button>
   </mat-menu>
 
-  <button mat-raised-button color="accent" (click)="this.excelService.exportAsExcelFile(this.bindingsForExport, 'bindings')">
+  <button mat-raised-button color="primary" (click)="this.excelService.exportAsExcelFile(this.bindingsForExport, 'bindings')">
     <mat-icon>cloud_download</mat-icon>&nbsp;&nbsp;Export Bindings
   </button>
 
-  <a href="https://github.com/IHTSDO/iid-ips" target="_blank" mat-raised-button color="accent"><mat-icon>info</mat-icon></a>
+  <a href="https://github.com/IHTSDO/iid-ips" target="_blank" mat-raised-button color="primary"><mat-icon>info</mat-icon></a>
 
 </mat-toolbar>
 <app-coding-tabs></app-coding-tabs>
