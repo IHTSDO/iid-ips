@@ -37,12 +37,14 @@ export class AppComponent {
   }
 
   updateCodeSystemOptions() {
+    console.log("Initiating updateCodeSystemOptions")
     this.terminologyService.getCodeSystems().subscribe(response => {
       this.editionsDetails = [];
       this.editions = response.entry;
       let editionNames = new Set();
       this.editions.forEach(loopEdition => {
-        editionNames.add(loopEdition.resource.title.substr(0,loopEdition.resource.title.lastIndexOf(' ')));
+        editionNames.add(loopEdition.resource.title);
+        // editionNames.add(loopEdition.resource.title.substr(0,loopEdition.resource.title.lastIndexOf(' ')));
       });
       editionNames.forEach(editionName => {
         this.editionsDetails.push(
@@ -52,7 +54,7 @@ export class AppComponent {
           }
         );
       });
-      const currentVerIndex = this.editionsDetails.findIndex(x => x.editionName === 'International Edition SNOMED CT release');
+      const currentVerIndex = this.editionsDetails.findIndex(x => x.editionName === 'International Edition'); //  SNOMED CT release
       if (currentVerIndex >= 0) {
         this.setEdition(this.editionsDetails[currentVerIndex].editions[0]);
       } else {
