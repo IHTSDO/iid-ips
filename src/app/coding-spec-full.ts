@@ -11,6 +11,16 @@ export const codingSpec = [
                 < 418038007 |Propensity to adverse reactions to substance (finding)|`,
                 value: '',
                 note: `Searching problem list codes using a complete edition of SNOMED CT.`
+            },
+            {
+                title: 'Allergy intolerance substance (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 105590001 |Substance (substance)| OR
+                < 373873005 |Pharmaceutical / biologic product (product)| OR 
+                < 418038007 |Propensity to adverse reactions to substance (finding)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching Allergy intolerance substance codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -26,6 +36,16 @@ export const codingSpec = [
                 < 243796009 |Situation with explicit context|`,
                 value: '',
                 note: 'Searching problem list codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Problem List Finding/Situation/Event (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 404684003 |Clinical finding (finding)| OR 
+                < 272379006 |Event (event)| OR 
+                < 243796009 |Situation with explicit context|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching problem list codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -39,6 +59,14 @@ export const codingSpec = [
                 ecl: `(< 787859002 |Vaccine product|)`,
                 value: '',
                 note: 'Searching immunization codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Immunizations (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 787859002 |Vaccine product|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching immunization codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -52,6 +80,14 @@ export const codingSpec = [
                 ecl: `(< 71388002 |Procedure|) MINUS (<< 308335008 |Patient encounter procedure|)`,
                 value: '',
                 note: 'Searching procedure codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Procedures (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `((< 71388002 |Procedure|) MINUS (<< 308335008 |Patient encounter procedure|)) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching procedure codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -65,6 +101,14 @@ export const codingSpec = [
                 ecl: `(< 373873005 |Pharmaceutical / biologic product (product)|) MINUS (<<787859002 |Vaccine product (medicinal product)|)`,
                 value: '',
                 note: 'Searching medication codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Medications (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `((< 373873005 |Pharmaceutical / biologic product (product)|) MINUS (<<787859002 |Vaccine product (medicinal product)|)) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching medication codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -78,6 +122,14 @@ export const codingSpec = [
                 ecl: `(< 409822003 |Domain Bacteria (organism)| OR < 414561005 |Kingdom Fungi (organism)| OR < 49872002 |Virus (organism)|)`,
                 value: '',
                 note: 'Searching result organism codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Result Organisms (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 409822003 |Domain Bacteria (organism)| OR < 414561005 |Kingdom Fungi (organism)| OR < 49872002 |Virus (organism)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching result organism codes using members of the IPS Refset only.'
             }
         ]
     },
@@ -91,6 +143,14 @@ export const codingSpec = [
                 ecl: `(< 49062001 |Device (physical object)|)`,
                 value: '',
                 note: 'Searching result organism codes using a complete edition of SNOMED CT.'
+            },
+            {
+                title: 'Devices (IPS Refset)',
+                type: 'autocomplete',
+                ecl: `(< 49062001 |Device (physical object)|) AND 
+                (^816080008 |International Patient Summary|)`,
+                value: '',
+                note: 'Searching result organism codes using members of the IPS Refset only.'
             }
         ]
     }

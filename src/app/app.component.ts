@@ -19,7 +19,7 @@ export class AppComponent {
   fhirServers = [
     { name: "Full Editions of SNOMED CT", url: "https://snowstorm.ihtsdotools.org/fhir"},
     { name: "IPS Terminology", url: "https://ips-browser.snomedtools.org/fhir"},
-    { name: "Snowstorm Lite", url: "https://snowstorm-lite.nw.r.appspot.com/fhir"}
+    // { name: "Snowstorm Lite", url: "https://snowstorm-lite.nw.r.appspot.com/fhir"}
   ];
   selectedServer = this.fhirServers[0];
 
